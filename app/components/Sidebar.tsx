@@ -8,11 +8,11 @@ type Props = {};
 function Sidebar({}: Props) {
   const [opened, closed] = useState(false);
   return (
-    <aside className=" h-screen bg-gray-100 border-r-white border-r shadow-md px-4 flex flex-col justify-between max-w-fit">
+    <aside className=" h-screen bg-gray-100 border-r-gray-300 border-r shadow-md px-2 flex flex-col justify-between max-w-fit">
       <div>
         <button
           onClick={() => closed(!opened)}
-          className="hover:bg-[#292929] hover:text-[#009688] rounded-full px-1 py-1 flex items-center justify-center"
+          className=" rounded-full pl-5 py-2 flex items-center justify-center"
         >
           {opened ? (
             <svg
@@ -46,7 +46,7 @@ function Sidebar({}: Props) {
             </svg>
           )}
         </button>
-        <div className=" bg-gray-300 p-4 flex-col flex gap-4 min-h-screen">
+        <div className=" p-4 flex-col flex gap-4 min-h-screen">
           {navlinks.map((item, i) => (
             <Link
               key={i}
@@ -54,7 +54,13 @@ function Sidebar({}: Props) {
               className="w-full rounded-lg hover:opacity-80 active:scale-95 items-center transition-all transform duration-300 p-1 gap-2 flex hover:bg-[#292929] hover:text-[#009688]"
             >
               <span>{item.icon}</span>
-              <span className={`${opened ? "" : "hidden"}`}>{item.name}</span>
+              <span
+                className={`${
+                  opened ? " w-full scale-100" : " w-0 scale-0"
+                }  duration-300 origin-left`}
+              >
+                {item.name}
+              </span>
             </Link>
           ))}
         </div>
