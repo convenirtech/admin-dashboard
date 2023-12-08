@@ -8,11 +8,11 @@ type Props = {};
 function Sidebar({}: Props) {
   const [opened, closed] = useState(false);
   return (
-    <aside className=" h-screen bg-gray-100 border-r-gray-300 border-r shadow-md px-2 flex flex-col justify-between max-w-fit">
+    <aside className=" h-screen bg-slate-900 text-white border-r-gray-700 border-r shadow-md md:px-2 flex flex-col justify-between max-w-fit">
       <div>
         <button
           onClick={() => closed(!opened)}
-          className=" rounded-full pl-5 py-2 flex items-center justify-center"
+          className=" rounded-full pl-2 md:pl-5 py-2 flex items-center justify-center"
         >
           {opened ? (
             <svg
@@ -46,17 +46,17 @@ function Sidebar({}: Props) {
             </svg>
           )}
         </button>
-        <div className=" p-4 flex-col flex gap-4 min-h-screen">
+        <div className=" p-1 md:p-4 flex-col flex gap-4 min-h-screen ">
           {navlinks.map((item, i) => (
             <Link
               key={i}
               href={item.link}
-              className="w-full rounded-lg hover:opacity-80 active:scale-95 items-center transition-all transform duration-300 p-1 gap-2 flex hover:bg-[#292929] hover:text-[#009688]"
+              className="w-full rounded-lg hover:opacity-80 active:scale-95 items-center md:text-base text-sm transition-all transform duration-300 p-1 gap-2 flex hover:bg-slate-600 hover:text-gray-200"
             >
               <span>{item.icon}</span>
               <span
                 className={`${
-                  opened ? " w-full scale-100" : " w-0 scale-0"
+                  opened ? " w-full scale-100" : " w-0 scale-0 collapse"
                 }  duration-300 origin-left`}
               >
                 {item.name}
